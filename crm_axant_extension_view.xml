@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+
+	<template id="web_example_assets_backend" name="crm_axant_extension_assets" inherit_id="web.assets_backend">
+		<xpath expr="." position="inside">
+			<script type="text/javascript" src="/crm_axant_extension/static/src/js/crm_axant_extension.js"></script>
+		</xpath>
+	</template>
+
+	<record id="axant_print_js" model="ir.actions.client">
+     	<field name="name">Axant Print JS</field>
+        <field name="tag">crm_axant_extension.printPage</field>
+	</record>
+	  
+	<record model="ir.ui.view" id="axant_extention_view">
+		<field name="name">CRM - Logged Phone Calls Tree Axant Extention</field>
+		<field name="model">crm.phonecall</field>
+		<field name="inherit_id" ref="crm.crm_case_inbound_phone_tree_view" />			  
+		<field name="arch" type="xml">
+				<field name="user_id" position="after">
+					<field name="axant"/>
+					<button string="Print call"
+							icon="gtk-print"
+							name="crm_axant_extension.axant_print_js" type="action" />
+				</field>
+		</field>
+	 </record>
+
+	</data>
+</openerp>
+
